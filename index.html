@@ -6,13 +6,14 @@
     <title>SpinBookie - Activando Bono</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@700;900&family=Inter:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon-green: #00ff88;
-            --dark-bg: #000000;
-            --dark-green: #0a2f1f;
-            --white: #ffffff;
+            --brand-coral: #FF6B4A;
+            --dark-navy: #1a2332;
+            --darker-navy: #0f1419;
+            --text-white: #ffffff;
+            --glow-coral: rgba(255, 107, 74, 0.5);
         }
 
         * {
@@ -22,15 +23,17 @@
         }
 
         body {
-            font-family: 'Montserrat', 'Inter', sans-serif;
+            font-family: 'Montserrat', 'Poppins', 'Inter', sans-serif;
             height: 100vh;
-            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-green) 100%);
+            background: linear-gradient(180deg, var(--darker-navy) 0%, var(--dark-navy) 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            animation: fadeIn 0.6s ease-in;
+            animation: fadeIn 0.8s ease-in;
+            /* Garantir que o body não interfere no posicionamento */
+            position: relative;
         }
 
         @keyframes fadeIn {
@@ -42,19 +45,40 @@
             }
         }
 
-        /* HEADER SECTION */
+        /* HEADER SECTION - LOGO INTEGRATION */
         .header {
             position: absolute;
             top: 40px;
             left: 50%;
             transform: translateX(-50%);
-            animation: fadeIn 0.6s ease-in;
+            animation: fadeIn 0.8s ease-in;
+            z-index: 10;
+        }
+
+        .logo-container {
+            background: rgba(26, 35, 50, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(255, 107, 74, 0.3);
+            animation: logoFloat 3s infinite ease-in-out;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
         }
 
         .logo {
-            width: 200px;
+            width: 180px;
             height: auto;
             display: block;
+            filter: brightness(0.95) contrast(1.1);
         }
 
         /* MAIN CARD SECTION */
@@ -70,21 +94,26 @@
             width: 320px;
             height: 320px;
             border-radius: 24px;
-            border: 3px solid var(--neon-green);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4), 0 0 60px rgba(0, 255, 136, 0.2);
+            border: 3px solid var(--brand-coral);
+            box-shadow: 0 0 30px rgba(255, 107, 74, 0.5), 0 0 60px rgba(255, 107, 74, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: glowPulse 2s infinite ease-in-out;
+            animation: glowPulse 2.5s infinite ease-in-out;
             position: relative;
+            background: rgba(26, 35, 50, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         @keyframes glowPulse {
             0%, 100% {
-                box-shadow: 0 0 30px rgba(0, 255, 136, 0.4), 0 0 60px rgba(0, 255, 136, 0.2);
+                box-shadow: 0 0 30px rgba(255, 107, 74, 0.5), 0 0 60px rgba(255, 107, 74, 0.25);
+                border-color: var(--brand-coral);
             }
             50% {
-                box-shadow: 0 0 40px rgba(0, 255, 136, 0.6), 0 0 80px rgba(0, 255, 136, 0.3);
+                box-shadow: 0 0 45px rgba(255, 107, 74, 0.7), 0 0 90px rgba(255, 107, 74, 0.4);
+                border-color: #ff8a6d;
             }
         }
 
@@ -92,13 +121,14 @@
             width: 280px;
             height: 280px;
             border-radius: 20px;
-            border: 2px solid var(--neon-green);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6), inset 0 0 20px rgba(0, 255, 136, 0.1);
+            border: 2px solid var(--brand-coral);
+            box-shadow: 0 0 25px rgba(255, 107, 74, 0.7), inset 0 0 20px rgba(255, 107, 74, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             position: relative;
+            background: rgba(15, 20, 25, 0.5);
         }
 
         .promo-image {
@@ -107,6 +137,18 @@
             object-fit: cover;
             border-radius: 16px;
             transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .promo-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(26, 35, 50, 0.2) 100%);
+            pointer-events: none;
         }
 
         .promo-image:hover {
@@ -115,22 +157,24 @@
 
         /* TEXT SECTION */
         .text-section {
-            margin-top: 30px;
+            margin-top: 35px;
             text-align: center;
         }
 
         .main-text {
-            font-family: 'Montserrat', 'Inter', sans-serif;
+            font-family: 'Montserrat', 'Poppins', 'Inter', sans-serif;
             font-weight: 700;
-            font-size: 28px;
-            color: var(--white);
-            text-shadow: 0 2px 10px rgba(0, 255, 136, 0.3);
+            font-size: 30px;
+            color: var(--text-white);
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
             line-height: 1.4;
+            letter-spacing: 0.5px;
         }
 
         .highlight {
-            color: var(--neon-green);
-            font-weight: 800;
+            color: var(--brand-coral);
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(255, 107, 74, 0.6);
         }
 
         /* LOADING INDICATOR */
@@ -138,16 +182,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 8px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 25px;
         }
 
         .dot {
-            width: 12px;
-            height: 12px;
-            background: var(--neon-green);
+            width: 14px;
+            height: 14px;
+            background: var(--brand-coral);
             border-radius: 50%;
             animation: dotPulse 1.4s infinite ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 107, 74, 0.6);
         }
 
         .dot:nth-child(1) {
@@ -164,19 +209,25 @@
 
         @keyframes dotPulse {
             0%, 100% {
-                opacity: 0.3;
+                opacity: 0.4;
                 transform: scale(1);
+                box-shadow: 0 0 10px rgba(255, 107, 74, 0.6);
             }
             50% {
                 opacity: 1;
-                transform: scale(1.2);
+                transform: scale(1.3);
+                box-shadow: 0 0 20px rgba(255, 107, 74, 0.9);
             }
         }
 
         /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .logo {
-                width: 160px;
+                width: 140px;
+            }
+
+            .logo-container {
+                padding: 15px;
             }
 
             .outer-frame {
@@ -190,11 +241,54 @@
             }
 
             .main-text {
-                font-size: 22px;
+                font-size: 24px;
             }
 
             .card-container {
                 margin-top: 60px;
+            }
+
+            .text-section {
+                margin-top: 30px;
+            }
+
+            .loading-dots {
+                margin-top: 20px;
+            }
+        }
+
+        /* ACCESSIBILITY - REDUCED MOTION */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .logo-container {
+                animation: none;
+            }
+
+            .outer-frame {
+                animation: none;
+            }
+
+            .dot {
+                animation: none;
+                opacity: 1;
+            }
+        }
+
+        /* FALLBACK FOR BROWSERS WITHOUT BACKDROP-FILTER */
+        @supports not (backdrop-filter: blur(10px)) {
+            .logo-container {
+                background: rgba(26, 35, 50, 0.9);
+            }
+
+            .outer-frame {
+                background: rgba(26, 35, 50, 0.6);
             }
         }
     </style>
@@ -202,14 +296,16 @@
 <body>
     <!-- HEADER SECTION -->
     <header class="header">
-        <img src="/images/Logo Spinbook.jpeg" alt="SpinBookie Logo" class="logo">
+        <div class="logo-container">
+            <img src="/images/Logo Spinbook.jpeg" alt="SpinBookie Logo" class="logo">
+        </div>
     </header>
 
     <!-- MAIN CARD SECTION -->
     <div class="card-container">
         <div class="outer-frame">
             <div class="inner-frame">
-                <img src="/public/images/300-Bonos.webp" alt="Bono 300%" class="promo-image">
+                <img src="/images/Tigre01.png" alt="Bono 300% - Activación en proceso" class="promo-image">
             </div>
         </div>
 
@@ -220,23 +316,27 @@
             </p>
 
             <!-- LOADING INDICATOR -->
-            <div class="loading-dots">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+            <div class="loading-dots" role="status" aria-label="Cargando">
+                <div class="dot" aria-hidden="true"></div>
+                <div class="dot" aria-hidden="true"></div>
+                <div class="dot" aria-hidden="true"></div>
             </div>
         </div>
     </div>
 
     <script>
-        // REDIRECT FUNCTIONALITY
-        const PLACEHOLDER_URL = 'https://example.com'; // Substitua pela URL de destino real
+        // REDIRECIONAMENTO DESABILITADO
+        // Para ativar novamente, descomente o código abaixo e defina PLACEHOLDER_URL
         
-        setTimeout(function() {
-            console.log('Redirigiendo a:', PLACEHOLDER_URL);
-            window.location.href = PLACEHOLDER_URL;
-        }, 2000);
+        console.log('✅ Página carregada - Redirecionamento desabilitado');
+        
+        // REDIRECT FUNCTIONALITY - DESABILITADO
+        // const PLACEHOLDER_URL = 'https://example.com'; // Substitua pela URL de destino real
+        // 
+        // setTimeout(function() {
+        //     console.log('Redirigiendo a:', PLACEHOLDER_URL);
+        //     window.location.href = PLACEHOLDER_URL;
+        // }, 2000);
     </script>
 </body>
 </html>
-
