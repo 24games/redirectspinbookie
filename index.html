@@ -6,14 +6,19 @@
     <title>SpinBookie - Activando Bono</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@700;900&family=Inter:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" href="images/Logo Spinbook.jpeg" as="image">
+    <link rel="preload" href="images/Tigre01.png" as="image">
     
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <!-- Google Tag Manager (carrega após paint) -->
+    <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-N45KTDVD');</script>
+    })(window,document,'script','dataLayer','GTM-N45KTDVD');
+    </script>
     <!-- End Google Tag Manager -->
     
     <style>
@@ -32,7 +37,7 @@
         }
 
         body {
-            font-family: 'Montserrat', 'Poppins', 'Inter', sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             height: 100vh;
             background: linear-gradient(180deg, var(--darker-navy) 0%, var(--dark-navy) 100%);
             display: flex;
@@ -40,8 +45,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            animation: fadeIn 0.8s ease-in;
-            /* Garantir que o body não interfere no posicionamento */
+            animation: fadeIn 0.3s ease-out;
             position: relative;
         }
 
@@ -60,14 +64,12 @@
             top: 40px;
             left: 50%;
             transform: translateX(-50%);
-            animation: fadeIn 0.8s ease-in;
+            animation: fadeIn 0.3s ease-out;
             z-index: 10;
         }
 
         .logo-container {
-            background: rgba(26, 35, 50, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(26, 35, 50, 0.85);
             padding: 12px;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(255, 107, 74, 0.3);
@@ -110,9 +112,7 @@
             justify-content: center;
             animation: glowPulse 2.5s infinite ease-in-out;
             position: relative;
-            background: rgba(26, 35, 50, 0.3);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(26, 35, 50, 0.5);
         }
 
         @keyframes glowPulse {
@@ -171,7 +171,7 @@
         }
 
         .main-text {
-            font-family: 'Montserrat', 'Poppins', 'Inter', sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-weight: 700;
             font-size: 30px;
             color: var(--text-white);
@@ -290,16 +290,6 @@
             }
         }
 
-        /* FALLBACK FOR BROWSERS WITHOUT BACKDROP-FILTER */
-        @supports not (backdrop-filter: blur(10px)) {
-            .logo-container {
-                background: rgba(26, 35, 50, 0.9);
-            }
-
-            .outer-frame {
-                background: rgba(26, 35, 50, 0.6);
-            }
-        }
     </style>
 </head>
 <body>
@@ -311,7 +301,7 @@
     <!-- HEADER SECTION -->
     <header class="header">
         <div class="logo-container">
-            <img src="images/Logo Spinbook.jpeg" alt="SpinBookie Logo" class="logo">
+            <img src="images/Logo Spinbook.jpeg" alt="SpinBookie Logo" class="logo" width="120" decoding="async" fetchpriority="high">
         </div>
     </header>
 
@@ -319,7 +309,7 @@
     <div class="card-container">
         <div class="outer-frame">
             <div class="inner-frame">
-                <img src="images/Tigre01.png" alt="Bono 300% - Activación en proceso" class="promo-image">
+                <img src="images/Tigre01.png" alt="Bono 300% - Activación en proceso" class="promo-image" width="280" height="280" decoding="async" fetchpriority="high">
             </div>
         </div>
 
@@ -339,39 +329,19 @@
     </div>
 
     <script>
-        // REDIRECIONAMENTO ATIVO - v2
-        console.log('Script carregado - Iniciando redirecionamento...');
-        
-        window.addEventListener('load', function() {
-            console.log('Página carregada completamente');
-            console.log('Aguardando 2 segundos antes do redirecionamento...');
-            
-            setTimeout(function() {
-                var params = window.location.search;
-                var redirect_link_with_params = "https://x.afilialink.com/click?pid=1078&offer_id=1076&sub1=gabriel" + params;
-                console.log('Parâmetros da URL:', params);
-                console.log('Link de redirecionamento:', redirect_link_with_params);
-                console.log('Redirecionando agora...');
-                
-                try {
-                    window.location.href = redirect_link_with_params;
-                } catch (error) {
-                    console.error('Erro ao redirecionar:', error);
-                    // Fallback: tentar com window.location.replace
-                    window.location.replace(redirect_link_with_params);
-                }
-            }, 2000);
-        });
-        
-        // Fallback caso o evento load não dispare
-        if (document.readyState === 'complete') {
-            console.log('Documento já carregado, iniciando redirecionamento imediato...');
-            setTimeout(function() {
-                var params = window.location.search;
-                var redirect_link_with_params = "https://x.afilialink.com/click?pid=1078&offer_id=1076&sub1=gabriel" + params;
-                window.location.href = redirect_link_with_params;
-            }, 2000);
-        }
+        (function() {
+            var params = window.location.search;
+            var url = "https://x.afilialink.com/click?pid=1078&offer_id=1076&sub1=gabriel" + params;
+            function go() {
+                try { window.location.href = url; }
+                catch (e) { window.location.replace(url); }
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() { setTimeout(go, 2000); });
+            } else {
+                setTimeout(go, 2000);
+            }
+        })();
     </script>
 </body>
 </html>
