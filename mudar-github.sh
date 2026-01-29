@@ -49,3 +49,4 @@ else
     echo "   3. Se o token tem permissões corretas"
 fi
 
+

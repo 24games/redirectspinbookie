@@ -133,3 +133,4 @@ Abra o DevTools (F12) para verificar.
 
 ⚠️ **Importante**: Atualize a URL de redirecionamento antes de fazer deploy em produção!
 
+
