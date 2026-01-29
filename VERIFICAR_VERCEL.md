@@ -1,11 +1,13 @@
 # 🔍 Como Verificar Problemas no Vercel
 
+> **📘 Tutorial completo para 404 nas URLs dinâmicas:** veja [TUTORIAL_404_URLS_DINAMICAS.md](./TUTORIAL_404_URLS_DINAMICAS.md)
+
 ## ✅ Checklist de Verificação
 
 ### 1. Verificar se o Repositório está Conectado
 - Acesse: https://vercel.com/dashboard
 - Vá em **Settings** → **Git**
-- Verifique se o repositório `guilhermesimas542-lab/Redirect-SpinBook` está conectado
+- Verifique se o repositório `24games/redirectspinbookie` está conectado
 
 ### 2. Verificar Último Deploy
 - No dashboard do Vercel, vá em **Deployments**
@@ -51,7 +53,7 @@ Se tudo estiver certo mas não atualizou:
 - Ou limpe o cache do navegador (Ctrl+Shift+R ou Cmd+Shift+R)
 
 ### 8. Verificar Arquivos no GitHub
-- Acesse: https://github.com/guilhermesimas542-lab/Redirect-SpinBook
+- Acesse: https://github.com/24games/redirectspinbookie
 - Verifique se os arquivos estão lá
 - Verifique se o `index.html` tem as alterações mais recentes
 
@@ -80,6 +82,11 @@ Se tudo estiver certo mas não atualizou:
 - Verifique se os arquivos foram commitados e enviados ao GitHub
 - Force um novo deploy manualmente
 
+### Problema: Páginas de slug dão 404 (ex: /cr2_v6)
+**Solução:**
+- Confirme que existe o arquivo `vercel.json` na raiz com o rewrite `/:slug` → `/:slug.html`
+- A URL correta é sem `.html`: `app.spinbookie.online/cr2_v6` (o Vercel reescreve para `cr2_v6.html`)
+
 ## 📋 Comandos Úteis
 
 ```bash
@@ -100,7 +107,8 @@ ls -la *.html
 ## 🔗 Links Úteis
 
 - Dashboard Vercel: https://vercel.com/dashboard
-- Repositório GitHub: https://github.com/guilhermesimas542-lab/Redirect-SpinBook
+- Repositório GitHub: https://github.com/24games/redirectspinbookie
+- Site (se configurado): https://app.spinbookie.online
 - Documentação Vercel: https://vercel.com/docs
 
 ## 💡 Dica
